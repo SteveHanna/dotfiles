@@ -22,6 +22,17 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-dispatch'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-rails'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'ap/vim-css-color'
+Plugin 'rizzatti/dash.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'eslint/eslint'
+
+"Plugin 'ngmy/vim-rubocop'
+
 "Plugin 'vim-scripts/ZoomWin'
 "Plugin 'tpope/vim-flagship'
 "Plugin 'skalnik/vim-vroom'
@@ -30,6 +41,7 @@ Plugin 'tpope/vim-dispatch'
 "Plugin 'digitaltoad/vim-jade'
 "Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'pangloss/vim-javascript'
+"Plugin 'OmniSharp/omnisharp-vim'
 
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-scripts/mimicpak'
@@ -40,6 +52,7 @@ filetype plugin indent on    " required
 
 syntax on
 
+
 let mapleader = "\<Space>"
 map <D-/> <plug>NERDCommenterToggle<CR>
 map <Leader>1 :NERDTreeToggle<CR>
@@ -47,7 +60,7 @@ map <Leader>1 :NERDTreeToggle<CR>
 " Relative & absolute line numbers
 set relativenumber
 set number
-set re=1
+"set re=1
 set lazyredraw
 
 " colorscheme Dejavu
@@ -121,7 +134,9 @@ map <Leader>ct = :!ctags -R<CR>
 
 " Rubocop with Syntastic
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_javascript_checkers = ['eslint']
 
+let g:gruvbox_contrast_dark = 'hard'
 
 set foldmethod=manual
 
@@ -132,3 +147,12 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR> 
+
+" rails.vim
+map gv = :Eview<CR>
+map gm = :Emodel<CR>
+map gc = :Econtroller<CR>
+
+" cursor
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
