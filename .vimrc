@@ -16,20 +16,22 @@ Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-powerline'
-"Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-dispatch'
+"Plugin 'tpope/vim-dispatch'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'slim-template/vim-slim'
-Plugin 'tpope/vim-rails'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ap/vim-css-color'
-Plugin 'rizzatti/dash.vim'
+"Plugin 'rizzatti/dash.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'eslint/eslint'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
 
 "Plugin 'ngmy/vim-rubocop'
 
@@ -44,7 +46,7 @@ Plugin 'eslint/eslint'
 "Plugin 'OmniSharp/omnisharp-vim'
 
 Plugin 'morhetz/gruvbox'
-Plugin 'vim-scripts/mimicpak'
+"Plugin 'vim-scripts/mimicpak'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -127,16 +129,20 @@ nnoremap <Leader>zo :ZoomWin<CR>
 
 " quick keys
 map <Leader>de = odebugger<Esc>
-map <Leader>fo = ofocus<Esc>
+" map <Leader>fo = ofocus<Esc>
+map <Leader>fo = /do<C-Enter>hi, focus: true<Esc>
 
 " ctags
-map <Leader>ct = :!ctags -R<CR>
+map <Leader>ct = :!ctags -R --exclude=.git --exclude=node_modules<CR>
 
 " Rubocop with Syntastic
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'reek']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_aggregate_errors = 1
 
 let g:gruvbox_contrast_dark = 'hard'
+
+let g:NERDSpaceDelims = 1
 
 set foldmethod=manual
 
