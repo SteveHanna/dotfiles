@@ -8,10 +8,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'tpope/vim-rhubarb'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-powerline'
@@ -29,7 +30,13 @@ Plugin 'elzr/vim-json'
 Plugin 'morhetz/gruvbox'
 Plugin 'w0rp/ale'
 Plugin 'rstacruz/sparkup'
+Plugin 'RRethy/vim-illuminate'
 
+Plugin 'junegunn/fzf.vim'
+Plugin 'chrisbra/csv.vim'
+" Plugin 'xolox/vim-notes'
+
+set rtp+=/usr/local/opt/fzf
 let g:jsx_ext_required = 0
 
 " All of your Plugins must be added before the following line
@@ -38,13 +45,16 @@ filetype plugin indent on    " required
 
 syntax on
 
-
+set clipboard+=unnamed
 
 " leader & shortcuts
 let mapleader = "\<Space>"
 map <D-/> <plug>NERDCommenterToggle<CR>
+map <Leader>c <plug>NERDCommenterToggle<CR>
 map <Leader>1 :NERDTreeToggle<CR>
-let g:ctrlp_map = '<Leader>o'
+map <leader>f :NERDTreeFind<CR>
+nmap <Leader>o :Files<CR>
+nmap <Leader>O :Ag<CR>
 map <Leader>de = odebugger<Esc>
 map <Leader>fo = /do<C-Enter>hi, focus: true<Esc>
 
@@ -56,11 +66,16 @@ set lazyredraw
 
 " colorscheme Dejavu
 colorscheme gruvbox
+set termguicolors
+set background=dark
 
-" use silver searcher for ctrlp
-let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore-dir=node_modules -g  ""'
+" FZF & silver searcher for searching
+let $FZF_DEFAULT_COMMAND = 'ag --nocolor -g ""'
 
 nnoremap gd <C-]>
+
+" Macros
+let @a = "xf]la\<BS>\<BS>\<CR>\<Esc>x"
 
 " tabs
 set tabstop=2
@@ -98,6 +113,7 @@ noremap <Right> <nop>
 nnoremap <C-tab> :tabnext<CR>
 
 " Case insensitive search
+set ignorecase
 set smartcase
 
 " Fugitive
@@ -108,11 +124,6 @@ set previewheight=30
 
 " ctags
 map <Leader>ct = :!ctags -R --exclude=.git --exclude=node_modules<CR>
-
-" Rubocop with Syntastic
-" let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'reek']
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_aggregate_errors = 1
 
 " ale syntax
 let g:ale_linters = { 'ruby': ['rubocop'], 'javascript': ['eslint'] }
